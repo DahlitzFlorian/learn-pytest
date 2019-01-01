@@ -32,7 +32,7 @@ jobs:
   - script: |
       python -m pytest test/ --junitxml=junit/test-results.xml
     displayName: 'pytest'
-  - script: pydocstyle --ignore=D301,D212,D203 src
+  - script: pydocstyle --ignore=D301,D212,D203,D213 src
     displayName: 'pydocstyle'
 
   - task: PublishTestResults@2
