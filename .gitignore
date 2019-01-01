@@ -1,0 +1,10 @@
+# idea
+.idea/
+
+# OSX/Windows
+.DS_Store
+.vscode/
+
+# __pycache__
+__pycache__/
+*/__pycache__/
