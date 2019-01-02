@@ -65,3 +65,13 @@ Markers can be combined:
 without *marker2*
 - `pytest -m "run_please or marker2"` those having either of both applied
 - ...
+
+## -x for --exitfirst ##
+Using this flag stops pytest from further executions right after the
+first test fails. Normally, pytest will continue with the other
+tests and tell you afterwards, which one failed. This flag is good
+for debugging purposes.
+
+```PowerShell
+$ pytest -x
+```
