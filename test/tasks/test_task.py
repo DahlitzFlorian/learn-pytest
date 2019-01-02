@@ -1,8 +1,11 @@
 """Test the Task class."""
 
+import pytest
+
 from src.tasks.api import Task
 
 
+@pytest.mark.run_please
 def test_task_without_parameters():
     """Test Task without parameters."""
     task = Task()
@@ -11,6 +14,7 @@ def test_task_without_parameters():
     assert task == task_defaults
 
 
+@pytest.mark.run_please
 def test_task_member_access():
     """Test Task member access."""
     task = Task("Learn Pytest", "Florian")
