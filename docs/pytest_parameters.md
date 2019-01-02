@@ -76,13 +76,6 @@ for debugging purposes.
 $ pytest -x
 ```
 
-## --tb=no hides trace back ##
-To not show the trace back, simply use `--tb=no`:
-
-```PowerShell
-$ pytest --tb=no
-```
-
 ## Capture output ##
 Normally, pytest captures everything that's directed to `stdout`. Only
 if the test fails, the output will be shown as it may help. Sometimes
@@ -99,3 +92,20 @@ Using `-l` prints the local variables in a test if the test fails.
 ```PowerShell
 $ pytest -l
 ```
+
+## Trace Back ##
+To not show the trace back, simply use `--tb=no`:
+
+```PowerShell
+$ pytest --tb=no
+```
+
+Use `-q/--quiet` to get less information (opposite of `-v/--verbose`):
+```PowerShell
+$ pytest -q
+```
+
+Or simply use `--tb` to scale the length of the trace back:
+- *long*: bunch of information
+- *short*: less than normal
+- *line*: just the line of the assertion
