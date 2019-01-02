@@ -82,3 +82,20 @@ To not show the trace back, simply use `--tb=no`:
 ```PowerShell
 $ pytest --tb=no
 ```
+
+## Capture output ##
+Normally, pytest captures everything that's directed to `stdout`. Only
+if the test fails, the output will be shown as it may help. Sometimes
+it's useful to not capture it to see the tests flow. Use `-s` to set
+`--capture=no`:
+
+```PowerShell
+$ pytest -s
+```
+
+## Show locals using -l/--showlocals ##
+Using `-l` prints the local variables in a test if the test fails.
+
+```PowerShell
+$ pytest -l
+```
