@@ -109,3 +109,12 @@ Or simply use `--tb` to scale the length of the trace back:
 - *long*: bunch of information
 - *short*: less than normal
 - *line*: just the line of the assertion
+
+## Get time performance information ##
+To get information about the time needed to *call*, *setup* or *teardown*
+a test, use `--durations=N` where N is a natural number. Passing
+`--durations=0` will report everything ordered from slowest to fastest.
+
+```PowerShell
+$ pytest --durations=0
+```
