@@ -75,3 +75,10 @@ for debugging purposes.
 ```PowerShell
 $ pytest -x
 ```
+
+## --tb=no hides trace back ##
+To not show the trace back, simply use `--tb=no`:
+
+```PowerShell
+$ pytest --tb=no
+```
