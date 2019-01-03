@@ -41,32 +41,32 @@ jobs:
       testRunTitle: 'Python $(python.version)'
     condition: succeededOrFailed()
 
-  - job: 'Test_Windows'
-      pool:
-        vmImage: 'vs2017-win2016'
-      strategy:
-        matrix:
-          Python36:
-            python.version: '3.6'
-          Python37:
-            python.version: '3.7'
-        maxParallel: 2
+- job: 'Test_Windows'
+  pool:
+    vmImage: 'vs2017-win2016'
+  strategy:
+    matrix:
+      Python36:
+        python.version: '3.6'
+      Python37:
+        python.version: '3.7'
+    maxParallel: 2
 
-      steps:
-      - task: UsePythonVersion@0
-        inputs:
-          versionSpec: '$(python.version)'
-          architecture: 'x64'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+      architecture: 'x64'
 
-      - script: |
-          python -m pip install --upgrade pip
-        displayName: 'Install dependencies'
-      - script: |
-          pip install pytest
-          pytest test --junitxml=junit\test-results.xml
-        displayName: 'pytest'
-      - task: PublishTestResults@2
-        inputs:
-          testResultsFiles: '**\test-results.xml'
-          testRunTitle: 'Python $(python.version)'
-        condition: succeededOrFailed()
+  - script: |
+      python -m pip install --upgrade pip
+    displayName: 'Install dependencies'
+  - script: |
+      pip install pytest
+      pytest test --junitxml=junit\test-results.xml
+    displayName: 'pytest'
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**\test-results.xml'
+      testRunTitle: 'Python $(python.version)'
+    condition: succeededOrFailed()
