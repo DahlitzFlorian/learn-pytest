@@ -2,7 +2,7 @@
 
 import pytest
 
-from src import tasks
+import tasks
 
 
 def test_add_wrong_parameter_type():
