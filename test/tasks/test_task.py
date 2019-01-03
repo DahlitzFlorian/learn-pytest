@@ -29,12 +29,7 @@ def test_task_as_dict():
     task = Task("Learn Pytest", "Florian", True, 42)
     task_dict = task._asdict()
 
-    expected = {
-        "summary": "Learn Pytest",
-        "owner": "Florian",
-        "done": True,
-        "id": 42
-    }
+    expected = {"summary": "Learn Pytest", "owner": "Florian", "done": True, "id": 42}
 
     assert task_dict == expected
 
