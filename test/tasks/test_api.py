@@ -4,11 +4,44 @@ import pytest
 
 import tasks
 
+from tasks import Task
+
+
+@pytest.fixture(autouse=True)
+def initialized_tasks_db(tmpdir):
+    """Connect to db before testing, disconnect after."""
+    # Setup : start db
+    tasks.start_tasks_db(str(tmpdir), "tiny")
+
+    # Part, where the testing happens
+    yield
+
+    # Teardown : stop db
+    tasks.stop_tasks_db()
+
 
 def test_add_wrong_parameter_type():
     """Test add with wrong parameters."""
     with pytest.raises(TypeError):
         tasks.add(task="Not a task object")
+
+
+def test_add_returns_valid_id():
+    """Test add returning an integer."""
+    new_task = Task("Learn Pytest")
+    task_id = tasks.add(new_task)
+
+    assert isinstance(task_id, int)
+
+
+@pytest.mark.smoke
+def test_added_task_has_id():
+    """Test add should set id."""
+    new_task = Task("Learn Pytest", owner="Florian", done=True)
+    task_id = tasks.add(new_task)
+    task_from_db = tasks.get(task_id)
+
+    assert task_from_db.id == task_id
 
 
 def test_start_tasks_db():
