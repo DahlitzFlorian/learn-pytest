@@ -1,0 +1,3 @@
+# Types of Tests #
+## Smoke Test ##
+Smoke tests are a subset of test cases that cover the most important functionality of a component or system, used to aid assessment if main functions of the software appear to work correctly. For example, a smoke test may address basic questions like "does the program run?", "does the user interface open?", or "does clicking the main button do anything?" The process of smoke testing aims to determine whether the application is so badly broken as to make further immediate testing unnecessary. Furthermore, it gives new developers a sense of how the system works.
