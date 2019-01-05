@@ -118,3 +118,31 @@ a test, use `--durations=N` where N is a natural number. Passing
 ```PowerShell
 $ pytest --durations=0
 ```
+
+## Skipping tests ##
+Sometimes it can be helpful to skip certain tests, which an be achieved
+using the marker `skip`:
+
+```python3
+@pytest.mark.skip(reason="Misunderstood the API")
+def test_to_skip():
+    """Test to skip."""
+    assert (1, 2, 3) != (3, 2, 1)
+```
+
+If a test should only be skipped under certain circumstances, use
+`skipif` instead:
+
+```python3
+@pytest.mark.skipif(
+    tasks.__version__ < "0.2.0",
+    reason="Not supported until version 0.2.0"
+)
+def test_feature():
+    """Test unsupported before certain version."""
+    assert (1, 2, 3) != (3, 2, 1)
+```
+
+As the `-v` flag does not show the reason for skipping the tests,
+the `-rs` flags to show.
+- `-r` (chars): show extra test summary
