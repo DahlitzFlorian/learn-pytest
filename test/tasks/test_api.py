@@ -79,6 +79,24 @@ def test_add_equivalent_multiple_parameters(summary, owner, done):
     assert equivalent(task_from_db, task)
 
 
+tasks_to_try = (
+    Task("Learn Pytest", done=True),
+    Task("Master Pytest", "Florian"),
+    Task("Teach Pytest", "Florian", True),
+    Task("Love Pytest", "Thomas", False)
+)
+task_ids = [f"Task({t.summary}, {t.owner}, {t.done}" for t in tasks_to_try]
+
+
+@pytest.mark.parametrize("task", tasks_to_try, ids=task_ids)
+def test_add_equivalent_parameters_using_external_variable(task):
+    """Test using external variable."""
+    task_id = tasks.add(task)
+    task_from_db = tasks.get(task_id)
+
+    assert equivalent(task_from_db, task)
+
+
 @pytest.mark.smoke
 def test_added_task_has_id():
     """Test add should set id."""

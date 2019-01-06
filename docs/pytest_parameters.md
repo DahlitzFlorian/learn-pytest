@@ -207,4 +207,8 @@ To call only a single parameter set, use the node (whole test identifier):
 $ pytest -v "test_file.py::test_using_parametrize_multiple_parameters[Master Pytest-None-True]"
 ```
 
-*Note: Quotes are needed if whitespaces are used!*
+*Note: Quotes are needed if whitespaces, brackets, braces and so on are used!*
+*Note: parametrize() can also be applied to classes. In this case, the
+parametersare forwarded to all tests methods.*
+
+*Further information, examples, and variants can be seen in **test_api.py**.*
