@@ -146,3 +146,25 @@ def test_feature():
 As the `-v` flag does not show the reason for skipping the tests,
 the `-rs` flags to show.
 - `-r` (chars): show extra test summary
+
+## xfail - Expected to fail ##
+Marking tests as expected to fail is as easy as:
+
+```python3
+@pytest.mark.xfail()
+def test_mark_as_expected_to_fail():
+    """Test expected to fail."""
+    assert (1, 2, 3) == (3, 2, 1)
+
+
+@pytest.mark.xfail(
+    tasks.__version__,
+    reason="Not supported until version 0.2.0"
+)
+def test_mark_expected_to_fail_with_options():
+    """Test expected to fail with options."""
+    assert (1, 2, 3) == (3, 2, 1)
+```
+
+Pytest will put an **x** if it fails as expected (**XFAIL**) and an
+**X** if expected to fail but passed (**XPASS**).

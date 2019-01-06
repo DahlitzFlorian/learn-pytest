@@ -68,7 +68,7 @@ def test_get_task_wrong_parameter_type():
         tasks.get(task_id="123")
 
 
-@pytest.mark.skipif(
+@pytest.mark.xfail(
     tasks.__version__ < "0.2.0", reason="Not supported until version 0.2.0"
 )
 def test_unique_id_1():
