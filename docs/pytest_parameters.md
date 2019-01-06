@@ -204,5 +204,7 @@ def test_using_parametrize_multiple_parameters(summary, owner, done):
 To call only a single parameter set, use the node (whole test identifier):
 
 ```PowerShell
-$ pytest -v test_file.py::test_using_parametrize_multiple_parameters[Master Pytest-None-True]
+$ pytest -v "test_file.py::test_using_parametrize_multiple_parameters[Master Pytest-None-True]"
 ```
+
+*Note: Quotes are needed if whitespaces are used!*
