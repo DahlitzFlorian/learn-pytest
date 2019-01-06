@@ -4,6 +4,7 @@ import pytest
 
 import tasks
 
+from helper import equivalent
 from tasks import Task
 
 
@@ -32,6 +33,50 @@ def test_add_returns_valid_id():
     task_id = tasks.add(new_task)
 
     assert isinstance(task_id, int)
+
+
+def test_add_equivalent():
+    """Test whether tasks.get() using id returned from tasks.add() works."""
+    task = Task("Learn Pytest", "Florian", True)
+    task_id = tasks.add(task)
+    task_from_db = tasks.get(task_id)
+
+    assert equivalent(task_from_db, task)
+
+
+@pytest.mark.parametrize(
+    "task",
+    [
+        Task("Learn Pytest", done=True),
+        Task("Master Pytest", "Florian"),
+        Task("Teach Pytest", "Florian", True),
+        Task("Love Pytest", "Thomas", False)
+    ]
+)
+def test_add_equivalent_one_parameter(task):
+    """Test whether tasks.get() using id returned from tasks.add() works using parametrize."""
+    task_id = tasks.add(task)
+    task_from_db = tasks.get(task_id)
+
+    assert equivalent(task_from_db, task)
+
+
+@pytest.mark.parametrize(
+    "summary, owner, done",
+    [
+        ("Learn Pytest", None, True),
+        ("Master Pytest", "Florian", False),
+        ("Teach Pytest", "Florian", True),
+        ("Love Pytest", "Thomas", False)
+    ]
+)
+def test_add_equivalent_multiple_parameters(summary, owner, done):
+    """Test whether tasks.get() using id returned from tasks.add() works using parametrize and multiple parameters."""
+    task = Task(summary, owner, done)
+    task_id = tasks.add(task)
+    task_from_db = tasks.get(task_id)
+
+    assert equivalent(task_from_db, task)
 
 
 @pytest.mark.smoke

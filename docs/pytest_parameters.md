@@ -168,3 +168,41 @@ def test_mark_expected_to_fail_with_options():
 
 Pytest will put an **x** if it fails as expected (**XFAIL**) and an
 **X** if expected to fail but passed (**XPASS**).
+
+## Parametrize Tests ##
+Testing a piece of code using only one pair of values may not be
+sufficient in some cases. Therefore, it's possible to call a test
+with multiple parameters.
+
+```python3
+@pytest.mark.parametrize(
+    "task",
+    [
+        Task("Learn Pytest", "Florian"),
+        Task("Master Pytest", None, True)
+    ]
+)
+def test_using_parametrize(task):
+    """Test using parametrize."""
+    assert equivalent(task, task)
+```
+
+```python3
+@pytest.mark.parametrize(
+    "summary, owner, done",
+    [
+        ("Learn Pytest", "Thomas", False),
+        ("Master Pytest", None, True),
+        ("Teach Pytest", "Mark")
+    ]
+)
+def test_using_parametrize_multiple_parameters(summary, owner, done):
+    """Test using parametrize with multiple parameters."""
+    assert equivalent(task, task)
+```
+
+To call only a single parameter set, use the node (whole test identifier):
+
+```PowerShell
+$ pytest -v test_file.py::test_using_parametrize_multiple_parameters[Master Pytest-None-True]
+```
