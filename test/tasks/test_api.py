@@ -68,25 +68,27 @@ def test_get_task_wrong_parameter_type():
         tasks.get(task_id="123")
 
 
-@pytest.mark.xfail(
-    tasks.__version__ < "0.2.0", reason="Not supported until version 0.2.0"
-)
-def test_unique_id_1():
-    """Test calling unique_id() twice should return different numbers."""
-    id_1 = tasks.unique_id()
-    id_2 = tasks.unique_id()
+class TestUniqueId:
+    """Test the unique_id() method."""
 
-    assert id_1 != id_2
+    @pytest.mark.xfail(
+        tasks.__version__ < "0.2.0", reason="Not supported until version 0.2.0"
+    )
+    def test_unique_id_1(self):
+        """Test calling unique_id() twice should return different numbers."""
+        id_1 = tasks.unique_id()
+        id_2 = tasks.unique_id()
 
+        assert id_1 != id_2
 
-def test_unique_id_2():
-    """Test unique_id() should return an unused id."""
-    ids = [
-        tasks.add(Task("Learn Pytest")),
-        tasks.add(Task("Master Pytest")),
-        tasks.add(Task("Teach Pytest")),
-    ]
+    def test_unique_id_2(self):
+        """Test unique_id() should return an unused id."""
+        ids = [
+            tasks.add(Task("Learn Pytest")),
+            tasks.add(Task("Master Pytest")),
+            tasks.add(Task("Teach Pytest")),
+        ]
 
-    uid = tasks.unique_id()
+        uid = tasks.unique_id()
 
-    assert uid not in ids
+        assert uid not in ids
