@@ -76,6 +76,14 @@ for debugging purposes.
 $ pytest -x
 ```
 
+## Show fixtures using --setup-show ##
+To get information about the setup of the tests, add the `--setup-show`
+flag. Information about used fixtures are displayed.
+
+```PowerShell
+$ pytest --setup-show
+```
+
 ## Capture output ##
 Normally, pytest captures everything that's directed to `stdout`. Only
 if the test fails, the output will be shown as it may help. Sometimes
