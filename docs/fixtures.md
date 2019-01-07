@@ -17,3 +17,9 @@ def test_data_delivery(deliver_number):
     """Test checking for number delivered by fixture."""
     assert deliver_number == 23
 ```
+
+## conftest.py ##
+To make fixtures available for all test files in a certain directory
+and for its subdirectories, put them into a `conftest.py` file located
+in the directory. It's considered as a local **plugin** by pytest, so
+never import it in any test file using `import conftest`!
