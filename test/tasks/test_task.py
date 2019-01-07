@@ -2,7 +2,7 @@
 
 import pytest
 
-from tasks.api import Task
+from tasks import Task
 
 
 @pytest.mark.run_please
