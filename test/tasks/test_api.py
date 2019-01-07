@@ -37,8 +37,8 @@ def test_add_equivalent(initialized_tasks_db):
         Task("Learn Pytest", done=True),
         Task("Master Pytest", "Florian"),
         Task("Teach Pytest", "Florian", True),
-        Task("Love Pytest", "Thomas", False)
-    ]
+        Task("Love Pytest", "Thomas", False),
+    ],
 )
 def test_add_equivalent_one_parameter(initialized_tasks_db, task):
     """Test whether tasks.get() using id returned from tasks.add() works using parametrize."""
@@ -54,8 +54,8 @@ def test_add_equivalent_one_parameter(initialized_tasks_db, task):
         ("Learn Pytest", None, True),
         ("Master Pytest", "Florian", False),
         ("Teach Pytest", "Florian", True),
-        ("Love Pytest", "Thomas", False)
-    ]
+        ("Love Pytest", "Thomas", False),
+    ],
 )
 def test_add_equivalent_multiple_parameters(initialized_tasks_db, summary, owner, done):
     """Test whether tasks.get() using id returned from tasks.add() works using parametrize and multiple parameters."""
@@ -70,7 +70,7 @@ tasks_to_try = (
     Task("Learn Pytest", done=True),
     Task("Master Pytest", "Florian"),
     Task("Teach Pytest", "Florian", True),
-    Task("Love Pytest", "Thomas", False)
+    Task("Love Pytest", "Thomas", False),
 )
 task_ids = [f"Task({t.summary}, {t.owner}, {t.done}" for t in tasks_to_try]
 
