@@ -5,5 +5,5 @@ setup(
     name="src",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
-    install_requires=["tinydb"]
+    install_requires=["tinydb"],
 )
