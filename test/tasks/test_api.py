@@ -84,6 +84,13 @@ def test_add_equivalent_parameters_using_external_variable(initialized_tasks_db,
     assert equivalent(task_from_db, task)
 
 
+def test_add_increases_count(db_with_three_tasks):
+    """Test add() affect on tasks.count()."""
+    tasks.add(Task("Throw a party"))
+
+    assert tasks.count() == 4
+
+
 @pytest.mark.smoke
 def test_added_task_has_id(initialized_tasks_db):
     """Test add should set id."""
